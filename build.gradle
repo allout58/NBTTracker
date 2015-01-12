@@ -25,7 +25,7 @@ group = "allout58.nbttrack" // http://maven.apache.org/guides/mini/guide-naming-
 archivesBaseName = "NBTTracker"
 
 minecraft {
-    version = "1.7.10-10.13.2.1277"
+    version = "1.7.10-10.13.2.1230"
     runDir = "run"
 
     // replacing
@@ -48,7 +48,7 @@ dependencies {
 }
 
 ext.fmlManifest = manifest {
-    attributes("FMLCorePlugin": "allout58.mods.nbttrack.NBTTrackCorePlugin", "FMLCorePluginContainsFMLMod": "true")
+    attributes("FMLCorePlugin": "allout58.mods.nbttrack.NBTTrackCorePlugin")
 }
 
 processResources
@@ -70,6 +70,10 @@ processResources
 // change the name of my obfuscated jar
 jar {
     classifier = 'universal'
+    manifest
+    {
+        from fmlManifest
+    }
 }
 
 // add a source jar
