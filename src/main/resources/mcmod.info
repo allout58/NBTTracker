@@ -1,0 +1,16 @@
+[
+{
+  "modid": "nbttrack",
+  "name": "NBT Tracker",
+  "description": "Tracks the NBT data on ItemStacks and logs discrepancies.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["allout58"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
