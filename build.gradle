@@ -48,7 +48,7 @@ dependencies {
 }
 
 ext.fmlManifest = manifest {
-    attributes("FMLCorePlugin": "allout58.mods.nbttrack.NBTTrackCorePlugin")
+    attributes("FMLCorePlugin": "allout58.mods.nbttrack.NBTTrackCorePlugin", "FMLCorePluginContainsFMLMod": "true")
 }
 
 processResources
