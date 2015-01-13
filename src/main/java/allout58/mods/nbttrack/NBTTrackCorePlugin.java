@@ -7,13 +7,13 @@ import java.util.Map;
 /**
  * Created by James Hollowell on 1/11/2015.
  */
-@IFMLLoadingPlugin.SortingIndex
+@IFMLLoadingPlugin.SortingIndex(32)
 public class NBTTrackCorePlugin implements IFMLLoadingPlugin
 {
     @Override
     public String[] getASMTransformerClass()
     {
-        return new String[] { "allout58.mods.nbttrack.asm.ItemStackClassTransformer"};
+        return new String[] { "allout58.mods.nbttrack.asm.ItemStackClassTransformer" };
     }
 
     @Override

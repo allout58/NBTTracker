@@ -1,5 +1,6 @@
 package allout58.mods.nbttrack.asm;
 
+import allout58.mods.nbttrack.command.NbtTrackingCommand;
 import net.minecraft.nbt.NBTTagCompound;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,7 +28,9 @@ public class SetTagHook implements Runnable
 
     public static void hook(NBTTagCompound tagCompound)
     {
-        new Thread(new SetTagHook(tagCompound, stackInfo.fillInStackTrace())).start();
+        if (NbtTrackingCommand.doTrack && tagCompound != null && tagCompound.hasNoTags())
+            log.error("Setting compound with no tags found! Offender: " + getOffender(stackInfo.fillInStackTrace()));
+        //        new Thread(new SetTagHook(tagCompound, stackInfo.fillInStackTrace())).start();
     }
 
     @Override
@@ -45,8 +48,8 @@ public class SetTagHook implements Runnable
         {
         }
 
-        if (compound.hasNoTags())
-            log.error("Setting compound with no tags found! Offender: " + getOffender(stack)); // getOffender(stack)
+        if (compound != null && compound.hasNoTags())
+            log.error("Setting compound with no tags found! Offender: " + getOffender(stack));
 
     }
 

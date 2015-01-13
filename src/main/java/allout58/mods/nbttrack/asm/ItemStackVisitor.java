@@ -18,7 +18,7 @@ public class ItemStackVisitor extends ClassVisitor
     //    private final MethodMatcher getStackTagMatcher;
     private final MethodMatcher setStackTagMatcher;
 
-    private final String clsName;
+    //    private final String clsName;
 
     private static class HookMethodVisitor extends MethodVisitor
     {
@@ -63,11 +63,11 @@ public class ItemStackVisitor extends ClassVisitor
     {
         super(Opcodes.ASM4, cv);
         log.info("ItemStackVisitor initialized");
-        clsName = name;
+        //        clsName = name;
         String descriptor = String.format("(L%s;)V", VisitorHelper.useSrgNames() ? "dh" : "net/minecraft/nbt/NBTTagCompound");
         //        Type getType = Type.getMethodType(Type.getType(NBTTagCompound.class), Type.VOID_TYPE);
         //        getStackTagMatcher = new MethodMatcher(name, "()Lnet/minecraft/nbt/NBTTagCompound;", "getTagCompound", "func_77978_p");
-        log.info("Matcher: " + clsName + " -- " + descriptor);
+        //        log.info("Matcher: " + clsName + " -- " + descriptor);
         setStackTagMatcher = new MethodMatcher(name, descriptor, "setTagCompound", "func_77982_d");
     }
 
@@ -75,7 +75,6 @@ public class ItemStackVisitor extends ClassVisitor
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions)
     {
         MethodVisitor parent = super.visitMethod(access, name, desc, signature, exceptions);
-        log.info(String.format("Visiting method %s -> %s %s", name, FMLDeobfuscatingRemapper.INSTANCE.mapMethodName(clsName, name, desc), desc));
         //        if (getStackTagMatcher.match(name, desc))
         //            return new HookMethodVisitor(parent);
         if (setStackTagMatcher.match(name, desc))
